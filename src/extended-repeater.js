@@ -16,14 +16,9 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function repeater(str, options) {
-	const separateArr =
-		options.addition !== undefined
-			? Array(
-					(options.additionRepeatTimes > 0 && options.additionRepeatTimes) || 1
-			  ).fill(`${options.addition}`)
-			: Array(
-					(options.additionRepeatTimes > 0 && options.additionRepeatTimes) || 1
-			  ).fill('');
+	const separateArr = Array(
+		(options.additionRepeatTimes > 0 && options.additionRepeatTimes) || 1
+	).fill((options.addition !== undefined && `${options.addition}`) || '');
 	const itemOfMainString =
 		`${str}` + separateArr.join(options.additionSeparator || '|');
 	return Array((options.repeatTimes > 0 && options.repeatTimes) || 1)
